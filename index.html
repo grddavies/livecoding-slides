@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Algorithmic Music with Tidal Cycles</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/codeish.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/vs2015.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section><h1>Algorithmic Music with Tidal Cycles</h1></section>
+        <section id="outline">
+          <h2>Session #0</h2>
+          <h3>Outline</h3>
+          <ol>
+            <a href="#/what-is-tidal"><li>What is Tidal?</li></a>
+            <!-- <a href="#/algorithmic-music"><li>Algorithmic Music</li></a> -->
+            <!-- <li>Introduction to Tidal Cycles and Friends</li> -->
+            <a href="#/patterns"><li>Patterns</li></a>
+          </ol>
+          <!-- end section 'outline' -->
+        </section>
+        <section id="what-is-tidal">
+          <section data-auto-animate>
+            <h3>What is Tidal?</h3>
+            <h4 class="fragment"><i>Tidal is software for making music</i></h4>
+          </section>
+          <section data-auto-animate>
+            <h3>What makes it different?</h3>
+          </section>
+          <section data-auto-animate>
+            <h3>What makes it different?</h3>
+            <p>Traditional western music is written on a score</p>
+            <img src="./images/hbd-score.png" alt="musical score" />
+          </section>
+          <section data-auto-animate>
+            <h3>What makes it different?</h3>
+            <p>Ableton uses a 'piano-roll' to represent rhythms and melodies</p>
+            <img src="./images/hbd-pianoroll.png" alt="ableton piano roll" />
+          </section>
+          <section data-auto-animate>
+            <h3>What makes it different?</h3>
+            <p>With Tidal we use <i>text</i> to generate music</p>
+            <pre><code class="language-haskell" data-line-numbers data-trim>
+              d1 
+                $ cat [ 
+                    n "[2 0 5] [4 [0@ 0]]",
+                    n "[2 0 7] [5 [0@ 0]]"
+                  ]
+                # sound "supervibe"
+            </code></pre>
+            <p class="fragment">
+              Tidal is a notation or language for describing <i>patterns</i>
+            </p>
+            <aside class="notes">
+              Patterns are what separates music from noise:
+              <ul>
+                <li>Rhythm</li>
+                <li>Melody / Harmony (pitch)</li>
+                <li>Dynamics (soft / loud)</li>
+                <li>Voicing/timbral patterns like call/response</li>
+                <li>Structural patterns like verse/chorus/bridge</li>
+              </ul>
+            </aside>
+          </section>
+          <!-- end section "what-is-tidal" -->
+        </section>
+        <section id="patterns">
+          <section
+            data-auto-animate
+            data-background-image="./images/tidal-vis.jpeg"
+            data-background-position="top"
+            data-background-size="auto 33%"
+            data-background-repeat="repeat-x"
+          >
+            <div class="bg">
+              <h3>Patterns</h3>
+              <i class="fragment">blah blah blah</i>
+              <!-- TODO: Find that Surgeon quote about mistakes and repeatition -->
+              <p class="fragment">TODO: Cycles, patterns, bars and beats</p>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <p>Let's break down the pattern we saw earlier...</p>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers>
+              d1 
+                $ cat [ 
+                    n "[2 0 5] [4 [0@ 0]]",
+                    n "[2 0 7] [5 [0@ 0]]"
+                  ]
+                # sound "supervibe"
+            </code></pre>
+          </section>
+          <section data-auto-animate>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers>
+              d1 
+            </code></pre>
+            <p>
+              This is a pattern name, you can think of it like an output channel
+            </p>
+            <div class="fragment">
+              <p>
+                We could also have used a <span class="num">number</span> or a
+                <span class="str">string</span> to label the pattern
+              </p>
+              <pre><code class="language-haskell" data-trim data-line-numbers="1,3,4">
+              p 42
+                $ ...
+              -- or
+              p "patty"
+                $ ...
+            </code></pre>
+              <aside class="notes">
+                <p>
+                  If this is the first time you have heard the word 'string' in
+                  this context:
+                </p>
+                <p>
+                  When we are talking about code, we're dealing with two kinds
+                  of text (at least...), so we need to distinguish between:
+                </p>
+                <ul>
+                  <li>
+                    <i>Source Code</i> - any instructions that we write, eg
+                    functions and variables
+                  </li>
+                  <li>
+                    <i>Strings</i> - text that is data, that the source code
+                    interacts with
+                  </li>
+                </ul>
+                <p>
+                  If this doesn't make much sense now, just remember a "string
+                  is enclosed with double quotes" in Tidal
+                </p>
+              </aside>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers="3,4">
+              d1 
+                $ cat [ 
+                    n "[2 0 5] [4 [0@ 0]]",
+                    n "[2 0 7] [5 [0@ 0]]"
+                  ]
+            </code></pre>
+            <p>
+              These <span class="str">strings</span> are patterns in Tidal's
+              notation
+            </p>
+          </section>
+          <section data-auto-animate>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers="2,5">
+              d1 
+                $ cat [ 
+                    n "[2 0 5] [4 [0@ 0]]",
+                    n "[2 0 7] [5 [0@ 0]]"
+                  ]
+            </code></pre>
+            <p>'cat' is a function that acts on a list of patterns</p>
+          </section>
+          <section data-auto-animate>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers="6">
+              d1 
+                $ cat [ 
+                    n "[2 0 5] [4 [0@ 0]]",
+                    n "[2 0 7] [5 [0@ 0]]"
+                  ]
+                # sound "supervibe"
+            </code></pre>
+            <p>A control pattern is TODO: added? using the `#`</p>
+          </section>
+          <!-- end section "patterns" -->
+        </section>
+        <section id="algorithmic-music">
+          <section class="img-header" data-auto-animate>
+            <h3>Algorithmic Music</h3>
+          </section>
+          <!-- end section "algorithmic-music" -->
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        progress: false,
+        shownotes: true,
+        // transitionSpeed: "fast",
+        pdfSeparateFragments: false,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
