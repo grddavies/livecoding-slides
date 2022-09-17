@@ -12,15 +12,56 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 @import url("./fonts/hasklig/hasklig.css");
 
+$blue: #569cd6;
+$dark_blue: #223e55;
+$light_blue: #9cdcfe;
+$cyan: #4ec9b0;
+$green: #6a9955;
+$light_green: #b5cea8;
+$red: #f44747;
+$light_red: #d16969;
+$orange: #ce9178;
+$yellow: #dcdcaa;
+$yellow_orange: #d7ba7d;
+$purple: #c586c0;
+$magenta: #d16d9e;
+
+// Cycle through colours
+$li1: #ffd700;
+$li2: #da70d6;
+$li3: #179fff;
+$liColours: $li1, $li2, $li3;
+
+ul.colourList {
+  li {
+    list-style: none;
+    margin-left: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  li::marker {
+    font-family: Hasklig;
+    font-weight: bold;
+    font-size: 0.85em;
+    content: "<*>";
+  }
+
+  @for $i from 1 through length($liColours) {
+    li:nth-child(#{length($liColours)}n + #{$i})::marker {
+      color: nth($liColours, $i);
+    }
+  }
+}
+
 // Override theme settings (see ../template/settings.scss)
-$mainFont: "Lato", sans-serif;
+$mainFont: Lato, sans-serif;
 $mainColor: #303031;
 $headingFont: "News Cycle", Impact, sans-serif;
 $headingColor: #1e1e1e;
 $headingTextShadow: none;
 $headingTextTransform: none;
 $backgroundColor: #fff;
-$linkColor: #4ec9b0;
+$linkColor: $cyan;
 $linkColorHover: lighten($linkColor, 20%);
 $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
 $codeFont: Hasklig, monospace;
@@ -34,20 +75,28 @@ $codeFont: Hasklig, monospace;
 
 // Additional styles
 
+h4 {
+  font-style: italic;
+}
+
 i {
   font-style: italic;
 }
 
 .num {
-    color: #b5cea8;
+  color: #b5cea8;
 }
 
 .str {
-    color: #ce9178;
+  color: #ce9178;
 }
 
 .reveal section {
   img:only-of-type {
     max-height: 400px;
   }
+}
+
+.textAlignLeft {
+  text-align: left;
 }

@@ -25,52 +25,86 @@
           <h3>Outline</h3>
           <ol>
             <a href="#/what-is-tidal"><li>What is Tidal?</li></a>
-            <!-- <a href="#/algorithmic-music"><li>Algorithmic Music</li></a> -->
-            <!-- <li>Introduction to Tidal Cycles and Friends</li> -->
             <a href="#/patterns"><li>Patterns</li></a>
+            <a href="#/beats-with-patterns"
+              ><li>Making Beats with patterns</li></a
+            >
           </ol>
           <!-- end section 'outline' -->
         </section>
         <section id="what-is-tidal">
           <section data-auto-animate>
             <h3>What is Tidal?</h3>
-            <h4 class="fragment"><i>Tidal is software for making music</i></h4>
+            <h4>Tidal is software for making music</h4>
           </section>
           <section data-auto-animate>
             <h3>What makes it different?</h3>
           </section>
           <section data-auto-animate>
             <h3>What makes it different?</h3>
-            <p>Traditional western music is written on a score</p>
+            <p>Traditional western music is written using notes on a stave</p>
             <img src="./images/hbd-score.png" alt="musical score" />
+            <aside class="notes">
+              <span>Features:</span>
+              <ul>
+                <li>Read left-to-right</li>
+                <li>The height of a note on the stave represents the pitch</li>
+                <li>
+                  The note's shape (ie with/without tail, head filled or hollow)
+                  represents duration, along with any dots after the note
+                </li>
+              </ul>
+            </aside>
           </section>
           <section data-auto-animate>
             <h3>What makes it different?</h3>
             <p>Ableton uses a 'piano-roll' to represent rhythms and melodies</p>
             <img src="./images/hbd-pianoroll.png" alt="ableton piano roll" />
+            <aside class="notes">
+              <span>Features:</span>
+              <ul>
+                <li>Read left-to-right, but regularly we loop a clip</li>
+                <li>The height of a note on the stave represents the pitch</li>
+                <li>The note's length represents duration</li>
+              </ul>
+            </aside>
           </section>
           <section data-auto-animate>
             <h3>What makes it different?</h3>
-            <p>With Tidal we use <i>text</i> to generate music</p>
-            <pre><code class="language-haskell" data-line-numbers data-trim>
+            <div>
+              <p>With Tidal we use text to generate music:</p>
+              <pre><code class="language-haskell" data-line-numbers data-trim>
               d1 
                 $ cat [ 
-                    n "[2 0 5] [4 [0@ 0]]",
-                    n "[2 0 7] [5 [0@ 0]]"
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
                   ]
                 # sound "supervibe"
             </code></pre>
-            <p class="fragment">
-              Tidal is a notation or language for describing <i>patterns</i>
-            </p>
+              <p>
+                This system for describing music is called <i>mini-notation</i>
+              </p>
+              <p class="fragment">
+                Using mini-notation we can build <i>patterns</i>
+              </p>
+            </div>
+
             <aside class="notes">
-              Patterns are what separates music from noise:
+              <span>Features:</span>
               <ul>
-                <li>Rhythm</li>
-                <li>Melody / Harmony (pitch)</li>
-                <li>Dynamics (soft / loud)</li>
-                <li>Voicing/timbral patterns like call/response</li>
-                <li>Structural patterns like verse/chorus/bridge</li>
+                <li>Patterns are read left-to-right</li>
+                <li>
+                  Pattern combination means that you need to read the entire
+                  expression to know how something will sound
+                </li>
+                <li>
+                  Pitch can be represented with a number or a letter (more on
+                  this later)
+                </li>
+                <li>
+                  Note length is determined by subdividing cycles according to
+                  any groupings in the notation
+                </li>
               </ul>
             </aside>
           </section>
@@ -86,10 +120,36 @@
           >
             <div class="bg">
               <h3>Patterns</h3>
-              <i class="fragment">blah blah blah</i>
-              <!-- TODO: Find that Surgeon quote about mistakes and repeatition -->
-              <p class="fragment">TODO: Cycles, patterns, bars and beats</p>
+              <i>Cycles, Patterns, Bars and Beats</i>
             </div>
+          </section>
+          <section data-auto-animate>
+            <h3>Patterns</h3>
+            <div class="textAlignLeft">
+              <ul class="colourList">
+                <li>
+                  Typically we break music up into phrases, bars and beats
+                </li>
+                <li class="fragment">
+                  In Tidal, the <i>cycle</i> is the fundamental unit. We break
+                  cycles down into bars and beats using patterns
+                </li>
+                <li class="fragment">
+                  Using Tidal's mini-notation, we can build patterns and combine
+                  them into musical phrases
+                </li>
+              </ul>
+            </div>
+            <aside class="notes">
+              Patterns are what separates music from noise:
+              <ul>
+                <li>Rhythm</li>
+                <li>Melody / Harmony (pitch)</li>
+                <li>Dynamics (soft / loud)</li>
+                <li>Voicing/timbral patterns like call/response</li>
+                <li>Structural patterns like verse/chorus/bridge</li>
+              </ul>
+            </aside>
           </section>
           <section data-auto-animate>
             <p>Let's break down the pattern we saw earlier...</p>
@@ -98,8 +158,8 @@
             ><code class="language-haskell" data-trim data-line-numbers>
               d1 
                 $ cat [ 
-                    n "[2 0 5] [4 [0@ 0]]",
-                    n "[2 0 7] [5 [0@ 0]]"
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
                   ]
                 # sound "supervibe"
             </code></pre>
@@ -111,12 +171,18 @@
               d1 
             </code></pre>
             <p>
-              This is a pattern name, you can think of it like an output channel
+              'd1' is a pattern name, you can think of it as an output channel
             </p>
+            <aside class="notes">
+              On a signle output channel you can send any number of sounds,
+              control its volume (gain) and apply effects (apply to all sounds
+              on the channel)
+            </aside>
             <div class="fragment">
               <p>
-                We could also have used a <span class="num">number</span> or a
-                <span class="str">string</span> to label the pattern
+                d1-16 are conventionally used, but we could have used a
+                <span class="num">number</span> or a
+                <span class="str">string</span> to name the pattern
               </p>
               <pre><code class="language-haskell" data-trim data-line-numbers="1,3,4">
               p 42
@@ -157,13 +223,21 @@
             ><code class="language-haskell" data-trim data-line-numbers="3,4">
               d1 
                 $ cat [ 
-                    n "[2 0 5] [4 [0@ 0]]",
-                    n "[2 0 7] [5 [0@ 0]]"
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
                   ]
             </code></pre>
             <p>
               These <span class="str">strings</span> are patterns in Tidal's
               notation
+            </p>
+            <p>
+              The 'note' function, converts numbers in the patterns into notes,
+              +1 for each semitone
+            </p>
+            <p>
+              The square brackets in the pattern group the notes, and give the
+              pattern its rhythmic structure. More on creating rhythms later...
             </p>
           </section>
           <section data-auto-animate>
@@ -172,11 +246,15 @@
             ><code class="language-haskell" data-trim data-line-numbers="2,5">
               d1 
                 $ cat [ 
-                    n "[2 0 5] [4 [0@ 0]]",
-                    n "[2 0 7] [5 [0@ 0]]"
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
                   ]
             </code></pre>
             <p>'cat' is a function that acts on a list of patterns</p>
+            <p>
+              It con<b>cat</b>enates multiple patterns, playing them one after
+              the other
+            </p>
           </section>
           <section data-auto-animate>
             <pre
@@ -184,20 +262,47 @@
             ><code class="language-haskell" data-trim data-line-numbers="6">
               d1 
                 $ cat [ 
-                    n "[2 0 5] [4 [0@ 0]]",
-                    n "[2 0 7] [5 [0@ 0]]"
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
                   ]
                 # sound "supervibe"
             </code></pre>
-            <p>A control pattern is TODO: added? using the `#`</p>
+            <p>
+              Finally, we add another pattern which describes which sound should
+              play the melody described before it
+            </p>
+          </section>
+          <section data-auto-animate>
+            <p>This describes exactly the same pattern as before</p>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers>
+              d1 
+                $ sound "supervibe"
+                + cat [ 
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
+                  ]
+            </code></pre>
+            <p>
+              There is not fixed order in which you need to define your
+              patterns, but order does influence the output:
+            </p>
+            <p>
+              Notice how we combine the patterns with a `+` rather
+              than a `#` this time
+            </p>
+            <p>More on this later...</p>
           </section>
           <!-- end section "patterns" -->
         </section>
-        <section id="algorithmic-music">
+        <section id="beats-with-patterns">
           <section class="img-header" data-auto-animate>
-            <h3>Algorithmic Music</h3>
+            <h3>Making Beats With Patterns</h3>
           </section>
-          <!-- end section "algorithmic-music" -->
+          <!-- Link to SuperDirt samples: -->
+          <!-- https://github.com/TidalCycles/Dirt-Samples -->
+          <!-- end section "beats-with-patterns" -->
         </section>
       </div>
     </div>
