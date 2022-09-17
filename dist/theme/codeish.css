@@ -25,6 +25,31 @@ ul.colourList li:nth-child(3n+3)::marker {
   color: #179fff;
 }
 
+ol.patternList {
+  counter-reset: d;
+}
+ol.patternList li {
+  list-style: none;
+  margin-left: 0.5em;
+  padding-bottom: 0.5em;
+  counter-increment: d;
+}
+ol.patternList li::marker {
+  font-family: Hasklig;
+  font-weight: bold;
+  font-size: 0.85em;
+  content: "d" counter(d) " $ ";
+}
+ol.patternList li:nth-child(3n+1)::marker {
+  color: #ffd700;
+}
+ol.patternList li:nth-child(3n+2)::marker {
+  color: #da70d6;
+}
+ol.patternList li:nth-child(3n+3)::marker {
+  color: #179fff;
+}
+
 section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
   color: #fff;
 }

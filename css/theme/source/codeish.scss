@@ -53,6 +53,30 @@ ul.colourList {
   }
 }
 
+ol.patternList {
+  counter-reset: d;
+
+  li {
+    list-style: none;
+    margin-left: 0.5em;
+    padding-bottom: 0.5em;
+    counter-increment: d;
+  }
+
+  li::marker {
+    font-family: Hasklig;
+    font-weight: bold;
+    font-size: 0.85em;
+    content: "d" counter(d) " $ ";
+  }
+
+  @for $i from 1 through length($liColours) {
+    li:nth-child(#{length($liColours)}n + #{$i})::marker {
+      color: nth($liColours, $i);
+    }
+  }
+}
+
 // Override theme settings (see ../template/settings.scss)
 $mainFont: Lato, sans-serif;
 $mainColor: #303031;
