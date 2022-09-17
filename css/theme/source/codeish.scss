@@ -13,6 +13,9 @@
 @import url("./fonts/hasklig/hasklig.css");
 
 // Some colours based on VS Code Dark+ Theme
+$black: #1e1e1e;
+$white: white;
+$dark_grey: #303031;
 $blue: #569cd6;
 $dark_blue: #223e55;
 $light_blue: #9cdcfe;
@@ -36,12 +39,12 @@ $liColours: $li1, $li2, $li3;
 
 // Main theme settings (see ../template/settings.scss)
 $mainFont: Lato, sans-serif;
-$mainColor: #303031;
+$mainColor: $dark_grey;
 $headingFont: "News Cycle", Impact, sans-serif;
-$headingColor: #1e1e1e;
+$headingColor: $black;
 $headingTextShadow: none;
 $headingTextTransform: none;
-$backgroundColor: #fff;
+$backgroundColor: $white;
 $linkColor: $cyan;
 $linkColorHover: lighten($linkColor, 20%);
 $selectionBackgroundColor: $magenta;
@@ -83,6 +86,7 @@ i {
 }
 
 .code {
+  color: $blue;
   font-family: $codeFont;
 }
 
