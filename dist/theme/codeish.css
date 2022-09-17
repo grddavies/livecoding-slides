@@ -4,52 +4,6 @@
 @import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 @import url("./fonts/hasklig/hasklig.css");
-ul.colourList li {
-  list-style: none;
-  margin-left: 0.5em;
-  padding-bottom: 0.5em;
-}
-ul.colourList li::marker {
-  font-family: Hasklig;
-  font-weight: bold;
-  font-size: 0.85em;
-  content: "<*>";
-}
-ul.colourList li:nth-child(3n+1)::marker {
-  color: #ffd700;
-}
-ul.colourList li:nth-child(3n+2)::marker {
-  color: #da70d6;
-}
-ul.colourList li:nth-child(3n+3)::marker {
-  color: #179fff;
-}
-
-ol.patternList {
-  counter-reset: d;
-}
-ol.patternList li {
-  list-style: none;
-  margin-left: 0.5em;
-  padding-bottom: 0.5em;
-  counter-increment: d;
-}
-ol.patternList li::marker {
-  font-family: Hasklig;
-  font-weight: bold;
-  font-size: 0.85em;
-  content: "d" counter(d) " $ ";
-}
-ol.patternList li:nth-child(3n+1)::marker {
-  color: #ffd700;
-}
-ol.patternList li:nth-child(3n+2)::marker {
-  color: #da70d6;
-}
-ol.patternList li:nth-child(3n+3)::marker {
-  color: #179fff;
-}
-
 section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
   color: #fff;
 }
@@ -80,7 +34,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   --r-link-color: #4ec9b0;
   --r-link-color-dark: #2f9b85;
   --r-link-color-hover: #9ce1d3;
-  --r-selection-background-color: rgba(0, 0, 0, 0.99);
+  --r-selection-background-color: #da70d6;
   --r-selection-color: #fff;
 }
 
@@ -423,4 +377,54 @@ i {
 
 .textAlignLeft {
   text-align: left;
+}
+
+.code {
+  font-family: Hasklig, monospace;
+}
+
+ul.colourList li {
+  list-style: none;
+  margin-left: 0.5em;
+  padding-bottom: 0.5em;
+}
+ul.colourList li::marker {
+  font-family: Hasklig;
+  font-weight: bold;
+  font-size: 0.85em;
+  content: "<*>";
+}
+ul.colourList li:nth-child(3n+1)::marker {
+  color: #ffd700;
+}
+ul.colourList li:nth-child(3n+2)::marker {
+  color: #da70d6;
+}
+ul.colourList li:nth-child(3n+3)::marker {
+  color: #179fff;
+}
+
+ol.patternList {
+  counter-reset: d;
+}
+ol.patternList li {
+  list-style: none;
+  margin-left: 0.5em;
+  padding-bottom: 0.5em;
+  counter-increment: d;
+}
+ol.patternList li::marker {
+  font-family: Hasklig;
+  font-weight: bold;
+  font-size: 0.85em;
+  content: "d" counter(d) " $ ";
+}
+ol.patternList li:nth-child(3n+1)::marker {
+  color: #ffd700;
+}
+ol.patternList li:nth-child(3n+2)::marker {
+  color: #da70d6;
+}
+ol.patternList li:nth-child(3n+3)::marker {
+  color: #179fff;
 }
