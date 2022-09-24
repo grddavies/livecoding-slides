@@ -36,6 +36,7 @@
           <section data-auto-animate>
             <h3>What is Tidal?</h3>
             <h4>Tidal is software for making music</h4>
+            <h4>... so what makes it different?</h4>
           </section>
           <section data-auto-animate>
             <h3>What makes it different?</h3>
@@ -72,7 +73,7 @@
           <section data-auto-animate>
             <h3>What makes it different?</h3>
             <div>
-              <p>With Tidal we use text to generate music:</p>
+              <p>With Tidal we use code (text) to represent music:</p>
               <pre><code class="language-haskell" data-line-numbers data-trim>
               d1 
                 $ cat [ 
@@ -82,10 +83,8 @@
                 # sound "supervibe"
             </code></pre>
               <p>
-                This system for describing music is called <i>mini-notation</i>
-              </p>
-              <p class="fragment">
-                Using mini-notation we can build <i>patterns</i>
+                Tidal's system for describing rhythms and melodies is called
+                <i>mini-notation</i>
               </p>
             </div>
 
@@ -107,6 +106,61 @@
                 </li>
               </ul>
             </aside>
+          </section>
+          <section data-auto-animate>
+            <h3>What makes it different?</h3>
+            <div>
+              <p>With Tidal we use code (text) to represent music:</p>
+              <pre><code class="language-haskell" data-line-numbers="3,4,6" data-trim>
+              d1 
+                $ cat [ 
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
+                  ]
+                # sound "supervibe"
+            </code></pre>
+              <p>Using mini-notation we build <i>patterns</i></p>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h3>What makes it different?</h3>
+            <div>
+              <p>With Tidal we use code (text) to represent music:</p>
+              <pre><code class="language-haskell" data-line-numbers="2,5" data-trim>
+              d1 
+                $ cat [ 
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
+                  ]
+                # sound "supervibe"
+            </code></pre>
+              <p>
+                We layer, combine, and mutate patterns with <i>functions</i> to
+                create variation.
+              </p>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h3>What makes it different?</h3>
+            <div>
+              <p>With Tidal we use code (text) to represent music:</p>
+              <pre><code class="language-haskell" data-line-numbers="2,5" data-trim>
+              d1 
+                $ cat [ 
+                    note "[2 0 5] [4 [0@ 0]]",
+                    note "[2 0 7] [5 [0@ 0]]"
+                  ]
+                # sound "supervibe"
+            </code></pre>
+            </div>
+            <p>
+              With mini-notation and functions, we can describe complex musical
+              structures succinctly
+            </p>
+            <p>
+              With practice this process can be done on-the-fly, in live
+              performance situations
+            </p>
           </section>
           <!-- end section "what-is-tidal" -->
         </section>
@@ -130,11 +184,11 @@
                 <li>
                   Typically we break music up into phrases, bars and beats
                 </li>
-                <li class="fragment">
+                <li>
                   In Tidal, the <i>cycle</i> is the most basic unit. We break
                   cycles down into bars and beats using patterns
                 </li>
-                <li class="fragment">
+                <li>
                   Using Tidal's mini-notation, we can build patterns and combine
                   them into musical phrases
                 </li>
@@ -152,30 +206,18 @@
             </aside>
           </section>
           <section data-auto-animate>
-            <p>Let's break down the pattern we saw earlier...</p>
+            <p>Let's start with the simplest pattern possible...</p>
             <pre
               data-id="pattern1"
             ><code class="language-haskell" data-trim data-line-numbers>
-              d1 
-                $ cat [ 
-                    note "[2 0 5] [4 [0@ 0]]",
-                    note "[2 0 7] [5 [0@ 0]]"
-                  ]
-                # sound "supervibe"
+              d1 $ s "bd"
             </code></pre>
-          </section>
-          <section data-auto-animate>
-            <pre
-              data-id="pattern1"
-            ><code class="language-haskell" data-trim data-line-numbers>
-              d1 
-            </code></pre>
-            <p>
+            <p class="fragment">
               <span class="code">d1</span> is a pattern name, you can think of
-              it as an output channel
+              it as an output channel on a mixing desk
             </p>
             <aside class="notes">
-              On a signle output channel you can send any number of sounds,
+              On a single output channel you can send any number of sounds,
               control its volume (gain) and apply effects (apply to all sounds
               on the channel)
             </aside>
@@ -192,118 +234,50 @@
               p "patty"
                 $ ...
             </code></pre>
-              <aside class="notes">
-                <p>
-                  If this is the first time you have heard the word 'string' in
-                  this context:
-                </p>
-                <p>
-                  When we are talking about code, we're dealing with two kinds
-                  of text (at least...), so we need to distinguish between:
-                </p>
-                <ul>
-                  <li>
-                    <i>Source Code</i> - any instructions that we write, eg
-                    functions and variables
-                  </li>
-                  <li>
-                    <i>Strings</i> - text that is data, that the source code
-                    interacts with
-                  </li>
-                </ul>
-                <p>
-                  If this doesn't make much sense now, just remember a "string
-                  is enclosed with double quotes" in Tidal
-                </p>
-              </aside>
             </div>
           </section>
           <section data-auto-animate>
-            <pre
-              data-id="pattern1"
-            ><code class="language-haskell" data-trim data-line-numbers="3,4">
-              d1 
-                $ cat [ 
-                    note "[2 0 5] [4 [0@ 0]]",
-                    note "[2 0 7] [5 [0@ 0]]"
-                  ]
-            </code></pre>
-            <p>
-              These <span class="str">strings</span> are patterns in Tidal's
-              notation
-            </p>
-            <p>
-              The <span class="code">note</span> function, converts numbers in
-              the patterns into notes, +1 for each semitone
-            </p>
-            <p>
-              The <span class="code">[</span> square brackets
-              <span class="code">]</span> in the pattern group the notes, and
-              give the pattern its rhythmic structure. More on creating rhythms
-              later...
-            </p>
-          </section>
-          <section data-auto-animate>
-            <pre
-              data-id="pattern1"
-            ><code class="language-haskell" data-trim data-line-numbers="2,5">
-              d1 
-                $ cat [ 
-                    note "[2 0 5] [4 [0@ 0]]",
-                    note "[2 0 7] [5 [0@ 0]]"
-                  ]
-            </code></pre>
-            <p>
-              <span class="code">cat</span> is a function that acts on a list of
-              patterns
-            </p>
-            <p>
-              It <i>concatenates</i> multiple patterns, playing them one after
-              the other
-            </p>
-          </section>
-          <section data-auto-animate>
-            <pre
-              data-id="pattern1"
-            ><code class="language-haskell" data-trim data-line-numbers="6">
-              d1 
-                $ cat [ 
-                    note "[2 0 5] [4 [0@ 0]]",
-                    note "[2 0 7] [5 [0@ 0]]"
-                  ]
-                # sound "supervibe"
-            </code></pre>
-            <p>
-              Finally, we add another pattern which describes which sound should
-              play the melody described before it
-            </p>
-          </section>
-          <section data-auto-animate>
-            <p>This expression describes exactly the same pattern as before</p>
+            <p>Let's start with the simplest pattern possible...</p>
             <pre
               data-id="pattern1"
             ><code class="language-haskell" data-trim data-line-numbers>
-              d1 
-                $ sound "supervibe"
-                + cat [ 
-                    note "[2 0 5] [4 [0@ 0]]",
-                    note "[2 0 7] [5 [0@ 0]]"
-                  ]
+              d1 $ s "bd"
             </code></pre>
             <p>
-              There is not fixed order in which you need to define your
-              patterns, but order may influence the output:
+              The pattern to the right of the
+              <span class="code">$</span> describes a single bassdrum (<span
+                class="code"
+                >"bd"</span
+              >) repeating at the start of every cycle
             </p>
-            <p>
-              Notice how we combine the patterns with a
-              <span class="code">+</span> rather than a
-              <span class="code">#</span>
-              this time
-            </p>
-            <p>
-              More on this later, for now lets get hands on with making patterns
-            </p>
+            <p class="fragment">... bit boring innit</p>
           </section>
+          <section data-auto-animate>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers>
+              d1 $ s "bd bd bd bd"
+            </code></pre>
+            <p>
+              Now, we're splitting the cycle evenly between four bassdrum hits
+            </p>
+            <p>
+              Notice how this whole pattern fits into the same amount of time as
+              the previous one (but a bit denser)
+            </p>
+            <p>Both patterns only last a single <i>cycle</i></p>
+            <p class="fragment">Let's add a classic off-beat hi-hat...</p>
+          </section>
+          <section data-auto-animate>
+            <pre
+              data-id="pattern1"
+            ><code class="language-haskell" data-trim data-line-numbers>
+              d1 $ s "bd bd bd bd . oh oh oh oh"
+            </code></pre>
+          </section>
+          <section data-auto-animate></section>
+          <section data-auto-animate></section>
+          <section data-auto-animate></section>
           <!-- end section "patterns" -->
         </section>
         <section id="beats-with-patterns">
